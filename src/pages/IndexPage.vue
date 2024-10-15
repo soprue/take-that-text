@@ -1,10 +1,12 @@
 <template>
   <q-page class="row items-center justify-evenly bg-[#c2c2c2] text-white">
-    hello
+    <ChatContainer />
   </q-page>
 </template>
 
 <script setup lang="ts">
+import ChatContainer from '@components/ChatContainer.vue';
+
 defineOptions({
   name: 'IndexPage',
 });
