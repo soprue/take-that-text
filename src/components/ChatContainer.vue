@@ -1,26 +1,25 @@
 <template>
   <div
-    class="h-[777px] max-h-[80%] w-[730px] max-w-[80%] rounded-3xl bg-[#eee] p-2"
+    class="flex h-[777px] max-h-[80%] w-[730px] max-w-[80%] flex-col rounded-3xl bg-[#eee] p-2"
   >
-    <div class="flex items-center gap-2 p-6">
-      <IconBase
-        width="30"
-        height="30"
-        icon-color="#9d14b7"
-        viewBox="0 -960 960 960"
-      >
-        <IconPersonPlay />
-      </IconBase>
-
+    <div class="flex items-center gap-3 p-6">
+      <q-icon
+        name="fa-solid fa-wand-magic-sparkles"
+        size="20px"
+        style="color: #9d14b7"
+      />
       <p class="text- select-none text-xl font-bold text-[#1b000f]">
         Take That Text
       </p>
     </div>
 
-    <div></div>
+    <div class="flex w-full flex-1 flex-col justify-end">
+      <div></div>
+      <ChatInputBox />
+    </div>
   </div>
 </template>
 
 <script setup>
-import IconPersonPlay from '@components/icons/IconPersonPlay.vue';
+import ChatInputBox from '@components/ChatInputBox.vue';
 </script>
