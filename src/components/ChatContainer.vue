@@ -6,9 +6,9 @@
       <q-icon
         name="fa-solid fa-wand-magic-sparkles"
         size="20px"
-        style="color: #9d14b7"
+        style="color: #b7136b"
       />
-      <p class="text- select-none text-xl font-bold text-[#1b000f]">
+      <p class="text- select-none text-xl font-bold text-[#1b0100]">
         Take That Text
       </p>
     </div>

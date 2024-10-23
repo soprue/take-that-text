@@ -3,7 +3,7 @@
     <div class="flex h-full w-11/12 items-center bg-white p-5">
       <textarea
         placeholder="텍스트를 입력해 주세요!"
-        class="max-h-[150px] w-full resize-none text-[#333] outline-none"
+        class="max-h-[150px] w-full resize-none text-[#1b0100] outline-none"
         rows="1"
         ref="textarea"
         @input="handleInput"
