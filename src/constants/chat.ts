@@ -2,7 +2,7 @@ import { ChatMessage } from 'src/type/chat';
 
 export const INITIAL_MESSAGES: ChatMessage[] = [
   {
-    text: '꾸미고 싶은 텍스트를 입력해 보세요! 🌟 아래처럼 예쁘게 만들어 드릴게요. 😉',
+    text: '꾸미고 싶은 텍스트를 입력해 보세요! 아래처럼 예쁘게 만들어 드릴게요. 🌟',
     align: 'left',
   },
   {
