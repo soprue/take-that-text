@@ -1,5 +1,5 @@
 <template>
-  <div class="flex min-h-[60px] overflow-hidden rounded-2xl shadow-sm">
+  <div class="z-10 flex min-h-[60px] overflow-hidden rounded-2xl shadow-sm">
     <div class="flex h-full w-11/12 items-center bg-white p-5">
       <textarea
         placeholder="텍스트를 입력해 주세요!"

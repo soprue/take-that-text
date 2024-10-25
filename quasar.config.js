@@ -69,6 +69,8 @@ module.exports = configure(function (/* ctx */) {
           '@layouts': path.resolve(__dirname, './src/layouts'),
           '@pages': path.resolve(__dirname, './src/pages'),
           '@router': path.resolve(__dirname, './src/router'),
+          '@constants': path.resolve(__dirname, './src/constants'),
+          '@type': path.resolve(__dirname, './src/type'),
         };
       },
       // viteVuePluginOptions: {},
