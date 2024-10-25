@@ -19,12 +19,10 @@
         </p>
       </div>
 
-      <div class="flex h-[700px] w-full flex-1 flex-col justify-start px-4">
-        <div
-          ref="chatContainer"
-          class="flex-1 overflow-y-auto"
-          style="max-height: 600px"
-        >
+      <div
+        class="flex h-[684px] w-full flex-1 flex-col justify-start px-4 pb-4"
+      >
+        <div ref="chatContainer" class="h-[620px] flex-1 overflow-y-auto">
           <transition-group
             name="chat"
             tag="div"
