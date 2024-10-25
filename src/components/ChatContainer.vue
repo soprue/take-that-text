@@ -3,7 +3,7 @@
     class="flex h-[777px] max-h-[80%] w-[730px] flex-col overflow-hidden rounded-3xl bg-[#eee]"
   >
     <div
-      class="cursor-container w-full"
+      class="relative w-full overflow-hidden"
       ref="containerRef"
       @mousemove="handleMouseMove"
     >
@@ -88,11 +88,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.cursor-container {
-  position: relative;
-  overflow: hidden;
-}
-
 .custom-cursor {
   position: absolute;
   width: v-bind('CURSOR_CONFIG.size + "px"');
