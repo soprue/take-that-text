@@ -17,6 +17,7 @@
         '!opacity-100': true,
       }"
       :disabled="isEmptyContents ? true : false"
+      @click="handleSend"
     >
       <q-icon
         name="fa-solid fa-reply"
@@ -32,6 +33,7 @@
 
 <script setup>
 import { onMounted, ref, computed } from 'vue';
+import { sendMessageToOpenAI } from '@type/openai';
 
 const textarea = ref(null);
 let contents = ref('');
@@ -48,6 +50,10 @@ const handleInput = (e) => {
 const handleAutoResize = () => {
   textarea.value.style.height = '1.5rem';
   textarea.value.style.height = textarea.value.scrollHeight + 'px';
+};
+
+const handleSend = () => {
+  sendMessageToOpenAI(contents.value.trim());
 };
 
 onMounted(() => {

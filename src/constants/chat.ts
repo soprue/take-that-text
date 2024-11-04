@@ -10,7 +10,7 @@ export const INITIAL_MESSAGES: ChatMessage[] = [
     align: 'right',
   },
   {
-    text: '얄미워😤 너🫵 정말😠\n왜 저럴까🤔 진짜⁉️\n내가 알던 핑크빛🎀 Romance💖는\n둥근 풍선🎈 같던데💭\n우린 좌↔️ 우↔️ 앞⬆️ 뒤⬇️ 뾰족하다구!⚔️🌀',
+    text: '얄미워😤 너🫵 정말😠\n왜 저럴까🤔 진짜⁉️\n내가 알던 💖 핑크빛 🌸 Romance💖는\n둥근 🎈 풍선 🎈 같던데💭\n우린 좌↔️ 우↔️ 앞⬆️ 뒤⬇️ 뾰족하다구!⚔️🌀',
     align: 'left',
   },
 ];
