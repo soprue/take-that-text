@@ -16,7 +16,7 @@
         'cursor-pointer': !isEmptyContents,
         '!opacity-100': true,
       }"
-      :disabled="isEmptyContents ? true : false"
+      :disabled="isEmptyContents || isLoading"
       @click="handleSend"
     >
       <q-icon
@@ -36,7 +36,8 @@ import { onMounted, ref, computed } from 'vue';
 import { sendMessageToOpenAI } from '@type/openai';
 
 const textarea = ref(null);
-let contents = ref('');
+const contents = ref('');
+const isLoading = ref(false);
 
 const isEmptyContents = computed(() => {
   return contents.value.trim().length === 0;
@@ -52,8 +53,20 @@ const handleAutoResize = () => {
   textarea.value.style.height = textarea.value.scrollHeight + 'px';
 };
 
-const handleSend = () => {
-  sendMessageToOpenAI(contents.value.trim());
+const handleSend = async () => {
+  if (isLoading.value) return;
+
+  isLoading.value = true;
+  contents.value = '';
+
+  try {
+    const response = await sendMessageToOpenAI(contents.value.trim());
+    console.log(response);
+  } catch (error) {
+    console.error('메시지 전송 실패:', error);
+  } finally {
+    isLoading.value = false;
+  }
 };
 
 onMounted(() => {
