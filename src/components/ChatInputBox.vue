@@ -2,6 +2,7 @@
   <div class="z-10 flex min-h-[60px] overflow-hidden rounded-2xl shadow-sm">
     <div class="flex h-full w-11/12 items-center bg-white p-5">
       <textarea
+        :value="contents"
         placeholder="텍스트를 입력해 주세요."
         class="max-h-[150px] w-full resize-none text-[#1b0100] outline-none"
         rows="1"
@@ -19,7 +20,9 @@
       :disabled="isEmptyContents || isLoading"
       @click="handleSend"
     >
+      <q-spinner v-if="isLoading" color="grey" size="1.5em" />
       <q-icon
+        v-else
         name="fa-solid fa-reply"
         size="20px"
         :style="{
