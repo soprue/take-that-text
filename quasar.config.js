@@ -71,6 +71,7 @@ module.exports = configure(function (/* ctx */) {
           '@router': path.resolve(__dirname, './src/router'),
           '@constants': path.resolve(__dirname, './src/constants'),
           '@type': path.resolve(__dirname, './src/type'),
+          '@utils': path.resolve(__dirname, './src/utils'),
         };
       },
       // viteVuePluginOptions: {},
