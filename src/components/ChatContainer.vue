@@ -36,7 +36,7 @@
             />
           </transition-group>
         </div>
-        <ChatInputBox />
+        <ChatInputBox @sendMessage="handleSendMessage" />
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@
 <script setup lang="ts">
 import { ref, onMounted, nextTick } from 'vue';
 
-import { ChatMessage } from '@type/chat';
+import { ChatMessage, SendMessagePayload } from '@type/chat';
 import { INITIAL_MESSAGES, CURSOR_CONFIG } from '@constants/chat';
 import ChatInputBox from '@components/ChatInputBox.vue';
 import ChatBubble from '@components/ChatBubble.vue';
@@ -75,6 +75,14 @@ const scrollToBottom = () => {
       chatContainer.value.scrollTop = chatContainer.value.scrollHeight;
     }
   });
+};
+
+const handleSendMessage = ({ text, response }: SendMessagePayload) => {
+  displayedTexts.value.push({ text, align: 'right' });
+  scrollToBottom();
+
+  displayedTexts.value.push({ text: response, align: 'left' });
+  scrollToBottom();
 };
 
 onMounted(() => {
