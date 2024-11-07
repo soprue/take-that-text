@@ -17,10 +17,10 @@
         'cursor-pointer': !isEmptyContents,
         '!opacity-100': true,
       }"
-      :disabled="isEmptyContents || isLoading"
+      :disabled="!props.isInit || isEmptyContents || isLoading"
       @click="handleSend"
     >
-      <q-spinner v-if="isLoading" color="grey" size="1.5em" />
+      <q-spinner v-if="!props.isInit || isLoading" color="grey" size="1.5em" />
       <q-icon
         v-else
         name="fa-solid fa-reply"
@@ -37,6 +37,9 @@
 <script setup>
 import { onMounted, ref, computed } from 'vue';
 
+const props = defineProps({
+  isInit: Boolean,
+});
 const emit = defineEmits(['sendMessage']);
 
 const textarea = ref(null);

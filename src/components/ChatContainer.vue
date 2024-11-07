@@ -36,7 +36,7 @@
             />
           </transition-group>
         </div>
-        <ChatInputBox @sendMessage="handleSendMessage" />
+        <ChatInputBox :isInit="isInit" @sendMessage="handleSendMessage" />
       </div>
     </div>
   </div>
@@ -51,6 +51,7 @@ import ChatInputBox from '@components/ChatInputBox.vue';
 import ChatBubble from '@components/ChatBubble.vue';
 import { sendMessageToOpenAI } from '@utils/openai';
 
+const isInit = ref(false);
 const cursor = ref<HTMLElement | null>(null);
 const containerRef = ref<HTMLElement | null>(null);
 const chatContainer = ref<HTMLElement | null>(null);
@@ -96,6 +97,8 @@ onMounted(() => {
     setTimeout(() => {
       displayedTexts.value.push(text);
       scrollToBottom();
+
+      if (index === INITIAL_MESSAGES.length - 1) isInit.value = true;
     }, index * 1000);
   });
 });
