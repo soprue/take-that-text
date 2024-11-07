@@ -36,7 +36,6 @@
 
 <script setup>
 import { onMounted, ref, computed } from 'vue';
-import { sendMessageToOpenAI } from '@utils/openai';
 
 const emit = defineEmits(['sendMessage']);
 
@@ -65,14 +64,8 @@ const handleSend = async () => {
   const messageContent = contents.value.trim();
   contents.value = '';
 
-  try {
-    const response = await sendMessageToOpenAI(messageContent);
-    emit('sendMessage', { text: messageContent, response: response });
-  } catch (error) {
-    console.error('메시지 전송 실패:', error);
-  } finally {
-    isLoading.value = false;
-  }
+  emit('sendMessage', { text: messageContent, response: '1' });
+  isLoading.value = false;
 };
 
 onMounted(() => {

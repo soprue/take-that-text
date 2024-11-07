@@ -49,6 +49,7 @@ import { ChatMessage, SendMessagePayload } from '@type/chat';
 import { INITIAL_MESSAGES, CURSOR_CONFIG } from '@constants/chat';
 import ChatInputBox from '@components/ChatInputBox.vue';
 import ChatBubble from '@components/ChatBubble.vue';
+import { sendMessageToOpenAI } from '@utils/openai';
 
 const cursor = ref<HTMLElement | null>(null);
 const containerRef = ref<HTMLElement | null>(null);
@@ -77,12 +78,17 @@ const scrollToBottom = () => {
   });
 };
 
-const handleSendMessage = ({ text, response }: SendMessagePayload) => {
+const handleSendMessage = async ({ text }: SendMessagePayload) => {
   displayedTexts.value.push({ text, align: 'right' });
   scrollToBottom();
 
-  displayedTexts.value.push({ text: response, align: 'left' });
-  scrollToBottom();
+  try {
+    const response = await sendMessageToOpenAI(text);
+    displayedTexts.value.push({ text: response!, align: 'left' });
+    scrollToBottom();
+  } catch (error) {
+    console.error('메시지 전송 실패:', error);
+  }
 };
 
 onMounted(() => {
