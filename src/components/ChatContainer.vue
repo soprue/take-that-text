@@ -1,14 +1,16 @@
 <template>
   <div
-    class="flex h-[777px] max-h-[80%] w-[730px] flex-col overflow-hidden rounded-3xl bg-[#eee]"
+    class="max-xs:w-11/12 max-xs:max-h-[90%] flex h-[777px] max-h-[80%] w-[730px] flex-col overflow-hidden rounded-3xl bg-[#eee]"
   >
     <div
-      class="relative w-full overflow-hidden"
+      class="relative h-full w-full overflow-hidden"
       ref="containerRef"
       @mousemove="handleMouseMove"
     >
       <div ref="cursor" class="custom-cursor blur-3xl"></div>
-      <div class="mx-4 my-2 flex h-[77px] items-center gap-3 p-6">
+      <div
+        class="max-xs:h-[50px] max-xs:p-3 mx-4 my-2 flex h-[77px] items-center gap-3 p-6"
+      >
         <q-icon
           name="fa-solid fa-wand-magic-sparkles"
           size="20px"
@@ -20,9 +22,12 @@
       </div>
 
       <div
-        class="flex h-[684px] w-full flex-1 flex-col justify-start px-4 pb-4"
+        class="max-xs:h-[calc(100%-50px-16px)] flex h-[calc(100%-77px-16px)] w-full flex-1 flex-col justify-start px-4 pb-4"
       >
-        <div ref="chatContainer" class="h-[620px] flex-1 overflow-y-auto">
+        <div
+          ref="chatContainer"
+          class="max-xs:h-[calc(100%-66px)] h-[calc(100%-76px)] flex-1 overflow-y-auto"
+        >
           <transition-group
             name="chat"
             tag="div"

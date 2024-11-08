@@ -17,4 +17,10 @@
   ::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 480px) {
+    * {
+      font-size: 14px;
+    }
+  }
 }

@@ -1,17 +1,19 @@
 <template>
-  <div class="z-10 flex min-h-[60px] overflow-hidden rounded-2xl shadow-sm">
-    <div class="flex h-full w-11/12 items-center bg-white p-5">
+  <div
+    class="max-xs:min-h-[50px] z-10 flex min-h-[60px] overflow-hidden rounded-2xl shadow-sm"
+  >
+    <div class="max-xs:w-5/6 flex h-full w-11/12 items-center bg-white p-5">
       <textarea
         :value="contents"
         placeholder="텍스트를 입력해 주세요."
-        class="max-h-[150px] w-full resize-none text-[#1b0100] outline-none"
+        class="max-xs:max-h-[100px] max-h-[150px] w-full resize-none text-[#1b0100] outline-none"
         rows="1"
         ref="textarea"
         @input="handleInput"
       ></textarea>
     </div>
     <button
-      class="flex w-1/12 items-center justify-center bg-[#f7f7f7]"
+      class="max-xs:w-1/6 flex w-1/12 items-center justify-center bg-[#f7f7f7]"
       :class="{
         '!cursor-default': isEmptyContents,
         'cursor-pointer': !isEmptyContents,
