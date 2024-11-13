@@ -1,6 +1,6 @@
 <template>
   <div
-    class="max-xs:w-11/12 max-xs:max-h-[90%] flex h-[777px] max-h-[80%] w-[730px] flex-col overflow-hidden rounded-3xl bg-[#eee]"
+    class="flex h-[777px] max-h-[80%] w-[730px] flex-col overflow-hidden rounded-3xl bg-[#eee] max-xs:max-h-[90%] max-xs:w-11/12"
   >
     <div
       class="relative h-full w-full overflow-hidden"
@@ -9,7 +9,7 @@
     >
       <div ref="cursor" class="custom-cursor blur-3xl"></div>
       <div
-        class="max-xs:h-[50px] max-xs:p-3 mx-4 my-2 flex h-[77px] items-center gap-3 p-6"
+        class="mx-4 my-2 flex h-[77px] items-center gap-3 p-6 max-xs:h-[50px] max-xs:p-3"
       >
         <q-icon
           name="fa-solid fa-wand-magic-sparkles"
@@ -22,11 +22,11 @@
       </div>
 
       <div
-        class="max-xs:h-[calc(100%-50px-16px)] flex h-[calc(100%-77px-16px)] w-full flex-1 flex-col justify-start px-4 pb-4"
+        class="flex h-[calc(100%-77px-16px)] w-full flex-1 flex-col justify-start px-4 pb-4 max-xs:h-[calc(100%-50px-16px)]"
       >
         <div
           ref="chatContainer"
-          class="max-xs:h-[calc(100%-66px)] h-[calc(100%-76px)] flex-1 overflow-y-auto"
+          class="h-[calc(100%-76px)] flex-1 overflow-y-auto max-xs:h-[calc(100%-66px)]"
         >
           <transition-group
             name="chat"
@@ -41,7 +41,11 @@
             />
           </transition-group>
         </div>
-        <ChatInputBox :isInit="isInit" @sendMessage="handleSendMessage" />
+        <ChatInputBox
+          v-model:isLoading="isLoading"
+          :isInit="isInit"
+          @sendMessage="handleSendMessage"
+        />
       </div>
     </div>
   </div>
@@ -57,6 +61,7 @@ import ChatBubble from '@components/ChatBubble.vue';
 import { sendMessageToOpenAI } from '@utils/openai';
 
 const isInit = ref(false);
+const isLoading = ref(false);
 const cursor = ref<HTMLElement | null>(null);
 const containerRef = ref<HTMLElement | null>(null);
 const chatContainer = ref<HTMLElement | null>(null);
@@ -94,6 +99,8 @@ const handleSendMessage = async ({ text }: SendMessagePayload) => {
     scrollToBottom();
   } catch (error) {
     console.error('메시지 전송 실패:', error);
+  } finally {
+    isLoading.value = false;
   }
 };
 

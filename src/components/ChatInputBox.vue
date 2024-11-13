@@ -19,10 +19,14 @@
         'cursor-pointer': !isEmptyContents,
         '!opacity-100': true,
       }"
-      :disabled="!props.isInit || isEmptyContents || isLoading"
+      :disabled="!props.isInit || props.isLoading || isEmptyContents"
       @click="handleSend"
     >
-      <q-spinner v-if="!props.isInit || isLoading" color="grey" size="1.5em" />
+      <q-spinner
+        v-if="!props.isInit || props.isLoading"
+        color="grey"
+        size="1.5em"
+      />
       <q-icon
         v-else
         name="fa-solid fa-reply"
@@ -39,12 +43,11 @@
 <script setup>
 import { onMounted, ref, computed } from 'vue';
 
-const props = defineProps({ isInit: Boolean });
-const emit = defineEmits(['sendMessage']);
+const props = defineProps({ isInit: Boolean, isLoading: Boolean });
+const emit = defineEmits(['sendMessage', 'update:isLoading']);
 
 const textarea = ref(null);
 const contents = ref('');
-const isLoading = ref(false);
 
 const isEmptyContents = computed(() => contents.value.trim() === '');
 
@@ -59,13 +62,12 @@ const handleAutoResize = () => {
 };
 
 const handleSend = async () => {
-  if (isLoading.value) return;
-  isLoading.value = true;
+  if (props.isLoading.value) return;
+  emit('update:isLoading', true);
 
   emit('sendMessage', { text: contents.value.trim(), response: '1' });
 
   contents.value = '';
-  isLoading.value = false;
   textarea.value.style.height = '1.5rem';
 };
 
